@@ -1,0 +1,8 @@
+{
+  "standard.autoFixOnSave": true,
+  "standard.enableGlobally": true,
+  "standard.options": {
+
+    "globals": ["axios", "alert", "localStorage"]
+  }
+}
