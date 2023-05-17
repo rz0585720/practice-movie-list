@@ -2,7 +2,7 @@ const BASE_URL = 'https://webdev.alphacamp.io'
 const INDEX_URL = BASE_URL + '/api/movies/'
 const POSTER_URL = BASE_URL + '/posters/'
 const movies = []
-const filterMovieList = []
+let filterMovieList = []
 const MOVIE_PER_PAGE = 12
 const dataPanel = document.querySelector('#data-panel')
 const searchForm = document.querySelector('#search-form')
@@ -141,13 +141,8 @@ searchForm.addEventListener('submit', function onSearchFormSubmit (event) {
   event.preventDefault() // 避免瀏覽器預設行為
   const keyword = searchInput.value.trim().toLowerCase()
 
-  // filter用法會回傳新的陣列，其條件為return後方為true的物件(這邊因為filterMovieList用const宣告，所以使用forEach迴圈再push進去)
-  // filterMovieList = movies.filter((item) => item.title.toLowerCase().includes(keyword))
-  movies.forEach((item) => {
-    if (item.title.toLowerCase().includes(keyword)) {
-      filterMovieList.push(item)
-    }
-  })
+  // filter用法會回傳新的陣列，其條件為return後方為true的物件
+  filterMovieList = movies.filter((item) => item.title.toLowerCase().includes(keyword))
 
   if (filterMovieList.length === 0) {
     return alert('Cannot find movies with keyword: ' + keyword)
